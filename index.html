@@ -3,7 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kilts & Clam Chowder — Coming Soon</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Kilts & Clam Chowder — Connecting Bostonians & Scots</title>
+<meta name="description" content="Where Boston fell for the Tartan Army. Pre-register now for early access to the dating site connecting Scots and Bostonians who met during the World Cup.">
+
+<!-- Open Graph / link preview tags -->
+<meta property="og:title" content="Kilts & Clam Chowder — Connecting Bostonians & Scots">
+<meta property="og:description" content="Where Boston fell for the Tartan Army. Pre-register now for early access.">
+<meta property="og:url" content="https://kiltsandclamchowder.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kilts & Clam Chowder — Connecting Bostonians & Scots">
+<meta name="twitter:description" content="Where Boston fell for the Tartan Army. Pre-register now for early access.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
 .flag-scot { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; font-style: normal; }
@@ -164,8 +178,11 @@ body::before {
 </head>
 <body>
 
-<div class="floater" style="width:2.5rem;height:1.8rem;background:url(https://flagcdn.com/w80/gb-sct.png) center/cover;border-radius:4px;font-size:0"></div>
-<div class="floater" style="width:2.5rem;height:1.8rem;background:url(https://flagcdn.com/w80/us.png) center/cover;border-radius:4px;font-size:0"></div>
+<div style="position:fixed;bottom:1rem;right:1rem;z-index:999;background:rgba(0,0,0,0.4);color:rgba(255,255,255,0.5);font-size:0.65rem;padding:0.3rem 0.6rem;border-radius:50px;font-family:monospace;">v2.2</div>
+
+
+<div class="floater"><span style="display:inline-block;width:2.5rem;height:1.8rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:3px;vertical-align:middle"></span></div>
+<div class="floater"><span style="display:inline-block;width:2.5rem;height:1.8rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:3px;vertical-align:middle"></span></div>
 <div class="floater">🍺</div>
 <div class="floater">🦞</div>
 <div class="floater">🎺</div>
@@ -179,7 +196,7 @@ body::before {
 
   <div class="live-badge">
     <div class="live-dot"></div>
-    <span class="live-text">🏴 The Tartan Army is still in Boston — act fast 🇺🇸</span>
+    <span class="live-text"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle;margin-right:4px"></span> The Tartan Army is still in Boston — act fast <span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle;margin-left:4px"></span></span>
   </div>
 
   <h1 class="logo">Kilts <span class="amp">&</span><br>Clam Chowder</h1>
@@ -199,8 +216,49 @@ body::before {
   
   </div>
 
+  <!-- ABOUT YOU -->
+  <div class="register-box" id="about-box" style="margin-bottom:1.5rem;">
+    <div class="register-title">First, tell us about you 👋</div>
+    <div class="register-sub">This shapes your quiz questions and your matches.</div>
+
+    <div class="form-row">
+      <input class="finput" type="text" id="fname" placeholder="First Name" required>
+      <input class="finput" type="number" id="fage" placeholder="Age" min="18" max="99" required>
+    </div>
+    <input class="finput" type="email" id="femail" placeholder="Email address" style="width:100%;margin-bottom:0.75rem" required>
+
+    <select class="fselect" id="fnationality" required onchange="onNationalityChange()">
+      <option value="" disabled selected>I am a…</option>
+      <option value="scot">🏴 Scot</option>
+      <option value="bostonian">🇺🇸 Bostonian</option>
+      <option value="other">Other — just get me on the list</option>
+    </select>
+
+    <select class="fselect" id="fgender" required>
+      <option value="" disabled selected>I am…</option>
+      <option value="man">Man</option>
+      <option value="woman">Woman</option>
+      <option value="nonbinary">Non-binary</option>
+      <option value="prefer_not">Prefer not to say</option>
+    </select>
+
+    <select class="fselect" id="fpreference" required>
+      <option value="" disabled selected>Looking for…</option>
+      <option value="men">Men</option>
+      <option value="women">Women</option>
+      <option value="everyone">Everyone</option>
+      <option value="prefer_not">Prefer not to say</option>
+    </select>
+
+    <div class="error-msg" id="error-msg-about"></div>
+
+    <button class="fsubmit" onclick="startQuiz()">
+      <span>Continue to Quiz →</span>
+    </button>
+  </div>
+
   <!-- QUIZ -->
-  <div class="quiz-section" id="quiz-section">
+  <div class="quiz-section" id="quiz-section" style="display:none;">
     <div style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;font-weight:500;">
       ✨ Take the 5-question compatibility quiz — we'll use your answers to match you on launch day
     </div>
@@ -222,26 +280,12 @@ body::before {
     <div class="quiz-skip" onclick="skipQuiz()">Skip quiz — just register me</div>
   </div>
 
-  <!-- REGISTER -->
-  <div class="register-box" id="register-box">
-    <div class="register-title">Pre-register for early access 🏴❤️🇺🇸</div>
-    <div class="register-sub" id="reg-sub">🏴 Complete the quiz above, then fill in your details below. 🇺🇸</div>
+  <!-- REGISTER (final step) -->
+  <div class="register-box" id="register-box" style="display:none;">
+    <div class="register-title">Lock in your spot 🎉</div>
+    <div class="register-sub" id="reg-sub">Quiz complete! Pick your notification preferences and you're in.</div>
 
     <div class="error-msg" id="error-msg"></div>
-
-    <div class="form-row">
-      <input class="finput" type="text" id="fname" placeholder="First Name" required>
-      <input class="finput" type="number" id="fage" placeholder="Age" min="18" max="99" required>
-    </div>
-    <input class="finput" type="email" id="femail" placeholder="Email address" style="width:100%;margin-bottom:0.75rem" required>
-    <select class="fselect" id="ftype" required>
-      <option value="" disabled selected>I am a…</option>
-      <option value="scot_boston">🏴 Scot in Boston — looking to stay connected</option>
-      <option value="bostonian_met">🇺🇸 Bostonian — I met a Scot and I need answers</option>
-      <option value="scot_home">🏴 Scot back home — left my heart in Boston</option>
-      <option value="bostonian_want">🇺🇸 Bostonian — I didn't meet anyone but I WANT TO</option>
-      <option value="other">Other — just get me on the list</option>
-    </select>
 
     <div class="notify-label">Notify me about… (pick all that apply)</div>
     <div class="notify-options">
@@ -252,14 +296,14 @@ body::before {
     </div>
 
     <button class="fsubmit" id="submit-btn" onclick="doRegister()">
-      <span id="btn-text">🏴 Reserve My Spot — It's Free 🇺🇸</span>
+      <span id="btn-text">Reserve My Spot — It's Free</span>
     </button>
     <p class="form-fine">No spam. No credit card. First access + 3 months premium free on launch. Unsubscribe any time.</p>
   </div>
 
   <!-- SUCCESS -->
   <div class="success-box" id="success-box">
-    <span class="big">🏴❤️🇺🇸</span>
+    <span class="big"><span style="display:inline-block;width:1.5rem;height:1.1rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:3px;vertical-align:middle"></span>❤️<span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span></span>
     <h3>You're on the list, ya beauty!</h3>
     <div class="success-result" id="success-result"></div>
     <p>You'll be first through the door when we launch. We'll also send you a heads-up about Tartan Army events still happening in Boston this week.</p>
@@ -286,26 +330,26 @@ body::before {
 
   <div class="ticker-wrap">
     <div class="ticker">
-      <div class="ticker-item">🏴 <span>Callum from Glasgow</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Maura from Southie</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Fiona from Edinburgh</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Connor from Cambridge</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Angus from Aberdeen</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Bridget from Dorchester</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Hamish from Inverness</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Shannon from JP</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Duncan from Perth</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Tara from Somerville</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Callum from Glasgow</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Maura from Southie</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Fiona from Edinburgh</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Connor from Cambridge</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Angus from Aberdeen</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Bridget from Dorchester</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Hamish from Inverness</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Shannon from JP</span> just pre-registered</div>
-      <div class="ticker-item">🏴 <span>Duncan from Perth</span> just pre-registered</div>
-      <div class="ticker-item">🇺🇸 <span>Tara from Somerville</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Callum from Glasgow</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Maura from Southie</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Fiona from Edinburgh</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Connor from Cambridge</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Angus from Aberdeen</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Bridget from Dorchester</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Hamish from Inverness</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Shannon from JP</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Duncan from Perth</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Tara from Somerville</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Callum from Glasgow</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Maura from Southie</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Fiona from Edinburgh</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Connor from Cambridge</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Angus from Aberdeen</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Bridget from Dorchester</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Hamish from Inverness</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Shannon from JP</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Duncan from Perth</span> just pre-registered</div>
+      <div class="ticker-item"><span style="display:inline-block;width:1.2rem;height:0.85rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:2px;vertical-align:middle"></span> <span>Tara from Somerville</span> just pre-registered</div>
     </div>
   </div>
 
@@ -317,11 +361,39 @@ body::before {
 </div>
 
 <script>
-// ── CONFIG — replace with your Worker URL after deploying ──
 const WORKER_URL = "https://kilts-api.alistaircole.workers.dev";
 
-// ── QUIZ DATA ──
-const questions = [
+const SCOT_FLAG = '<span style="display:inline-block;width:1.4rem;height:1rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:3px;vertical-align:middle"></span>';
+const USA_FLAG  = '<span style="display:inline-block;width:1.4rem;height:1rem;background:url(https://flagcdn.com/w40/us.png) center/cover;border-radius:3px;vertical-align:middle"></span>';
+
+// ── QUIZ QUESTIONS — tailored by nationality ──
+const questionsScot = [
+  { q: "The Tartan Army took over a Boston pub and started singing Flower of Scotland at 2am. You were…",
+    opts: ["Singing along by verse two, no shame", "Standing on a table conducting them", "Quietly buying the whole bar another round", "Eyeing up the Bostonian who couldn't stop watching you sing"] },
+  { q: "A Bostonian asks what you're wearing under the kilt. You…",
+    opts: ["\u201CStick around and find out\u201D", "Say \u201Cwouldn't you like to know\u201D with a wink", "Actually answer honestly, no games", "Ask what SHE'S wearing instead"] },
+  { q: "She says your accent \u201Cdoes things to her.\u201D You…",
+    opts: ["Lean in and say it again, slower, right in her ear", "Ask exactly what kind of things", "Play it cool but you're absolutely using this later", "Tell her you know exactly what you're doing"] },
+  { q: "She calls your offer to \u201Cshow her Edinburgh properly\u201D forward. You…",
+    opts: ["Tell her that's exactly the idea", "Say you'll let her decide how forward it gets", "Promise her the full itinerary, no detail spared", "Back off — let her come to you first"] },
+  { q: "Last call, she hasn't let go of your arm all night. You…",
+    opts: ["Skip the goodbyes, take her home", "Get her number and make a very specific promise", "Make her wait until Edinburgh to find out what happens next", "Let her make the first move — you already know she will"] }
+];
+
+const questionsBostonian = [
+  { q: "A Scot in full kilt asks you for directions to \u201Cthe best chowdah.\u201D You…",
+    opts: ["Walk him there yourself, obviously", "Give wrong directions just to keep talking to him", "Ask what he's wearing under that kilt before answering", "Test him first — does he even like seafood"] },
+  { q: "You finally ask what's under the kilt. He…",
+    opts: ["\u201CCome closer and I'll show you\u201D", "Says it's \u201Ca Scotland exclusive — passport required\u201D", "Lifts it slightly, just to watch you react", "Just laughs and changes the subject (frustrating)"] },
+  { q: "He tells you he'd cross the Atlantic for one night with you. You…",
+    opts: ["Tell him to skip the flight and stay right here", "Already mentally booking his return flight", "Ask him to be a lot more specific about what that night looks like", "Say you'd need way more convincing than that"] },
+  { q: "He's teaching you a Gaelic phrase that's definitely not \u201Cgood morning.\u201D You…",
+    opts: ["Make him whisper it again, closer this time", "Pull him closer instead of asking for a translation", "Say you'll learn it properly — in private", "Tell him you don't need words to understand what he means"] },
+  { q: "Last call. He hasn't stopped looking at you all night. You…",
+    opts: ["Tell him the night doesn't have to end here", "Ask exactly what he has planned next", "Make him work for your number first", "Already have your coat on, waiting by the door"] }
+];
+
+const questionsOther = [
   { q: "The World Cup final's on. What are you serving?",
     opts: ["Clam chowder and Sam Adams — obviously", "Scotch pie and Irn-Bru. Non-negotiable.", "Whatever the Scot/American in my life wants", "I'd get distracted and forget the food entirely"] },
   { q: "Someone with an impenetrable accent is talking to you. You…",
@@ -335,18 +407,61 @@ const questions = [
 ];
 
 const results = [
-  { emoji: "🏴❤️🇺🇸", title: "The Full Tartan Convert",      desc: "Born for this. Atlantic love is your destiny. We'll find your match on launch day." },
-  { emoji: "✈️🥰",              title: "The Transatlantic Romantic", desc: "Distance is an adventure to you. Your match is equally unbothered by time zones." },
-  { emoji: "🍺💕",              title: "The Pub Philosopher",        desc: "Best connections happen over a pint and zero pretension. We know exactly who to match you with." }
+  { emoji: SCOT_FLAG + " \u2764\uFE0F " + USA_FLAG, title: "The Full Tartan Convert",      desc: "Born for this. Atlantic love is your destiny. We'll find your match on launch day." },
+  { emoji: "\u2708\uFE0F\uD83E\uDD70",              title: "The Transatlantic Romantic", desc: "Distance is an adventure to you. Your match is equally unbothered by time zones." },
+  { emoji: "\uD83C\uDF7A\uD83D\uDC95",              title: "The Pub Philosopher",        desc: "Best connections happen over a pint and zero pretension. We know exactly who to match you with." }
 ];
 
 let cur = 0;
 let answers = {};
 let quizDone = false;
 let resultType = "";
+let activeQuestions = questionsOther;
+
+function onNationalityChange() {
+  // no-op placeholder, selection read at startQuiz time
+}
+
+function startQuiz() {
+  const name  = document.getElementById('fname').value.trim();
+  const age   = document.getElementById('fage').value;
+  const email = document.getElementById('femail').value.trim();
+  const nat   = document.getElementById('fnationality').value;
+  const gender = document.getElementById('fgender').value;
+  const pref  = document.getElementById('fpreference').value;
+  const errEl = document.getElementById('error-msg-about');
+
+  errEl.style.display = 'none';
+
+  if (!name || !email || !nat || !gender || !pref) {
+    errEl.textContent = 'Please fill in all fields before continuing.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (!email.includes('@')) {
+    errEl.textContent = 'Please enter a valid email address.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (!age || age < 18) {
+    errEl.textContent = 'You must be 18 or older to register.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  if (nat === 'scot') activeQuestions = questionsScot;
+  else if (nat === 'bostonian') activeQuestions = questionsBostonian;
+  else activeQuestions = questionsOther;
+
+  document.getElementById('about-box').style.display = 'none';
+  document.getElementById('quiz-section').style.display = 'block';
+  cur = 0;
+  answers = {};
+  renderQ();
+}
 
 function renderQ() {
-  const q = questions[cur];
+  const q = activeQuestions[cur];
   document.getElementById('quiz-content').innerHTML = `
     <div class="quiz-q">${q.q}</div>
     <div class="quiz-opts">
@@ -356,7 +471,7 @@ function renderQ() {
         </div>`).join('')}
     </div>
     <button onclick="nextQ()" style="width:100%;padding:0.85rem;border:none;border-radius:50px;background:linear-gradient(135deg,var(--gold),#ff8c00);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;opacity:0.5" id="next-btn">
-      ${cur < questions.length - 1 ? 'Next →' : 'See My Result →'}
+      ${cur < activeQuestions.length - 1 ? 'Next →' : 'See My Result →'}
     </button>`;
   for (let i = 0; i < 5; i++) document.getElementById('qp' + (i + 1)).classList.toggle('on', i <= cur);
 }
@@ -371,7 +486,7 @@ function pickOpt(el, idx) {
 function nextQ() {
   if (answers['q' + (cur + 1)] === undefined) return;
   cur++;
-  if (cur >= questions.length) {
+  if (cur >= activeQuestions.length) {
     showQuizResult();
   } else {
     renderQ();
@@ -384,21 +499,25 @@ function showQuizResult() {
   resultType = r.title;
   document.getElementById('quiz-content').style.display = 'none';
   document.getElementById('quiz-result-box').style.display = 'block';
-  document.getElementById('qr-emoji').textContent = r.emoji;
+  document.getElementById('qr-emoji').innerHTML = r.emoji;
   document.getElementById('qr-title').textContent = r.title;
-  document.getElementById('qr-desc').textContent = r.desc + ' Fill in your details below to lock in your spot.';
-  document.getElementById('reg-sub').textContent = '🎉 Quiz done! Now lock in your spot below.';
-  // hide prog bar
+  document.getElementById('qr-desc').textContent = r.desc + ' Click below to lock in your spot.';
   document.getElementById('quiz-prog').style.display = 'none';
-  document.querySelector('.quiz-skip').style.display = 'none';
+  const skipEl = document.querySelector('.quiz-skip');
+  if (skipEl) skipEl.style.display = 'none';
+
+  setTimeout(() => {
+    document.getElementById('quiz-section').style.display = 'none';
+    document.getElementById('register-box').style.display = 'block';
+    document.getElementById('register-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 1800);
 }
 
 function skipQuiz() {
   document.getElementById('quiz-section').style.display = 'none';
-  document.getElementById('reg-sub').textContent = 'Pre-register now for priority access — quiz available after launch too.';
+  document.getElementById('register-box').style.display = 'block';
+  document.getElementById('reg-sub').textContent = 'No quiz answers — you can take it after launch too.';
 }
-
-
 
 // ── LIVE COUNTER ──
 let count = 847;
@@ -424,11 +543,12 @@ function toggleOpt(el) { el.classList.toggle('active'); }
 function showSuccess() {
   document.getElementById('register-box').style.display = 'none';
   document.getElementById('quiz-section').style.display = 'none';
+  document.getElementById('about-box').style.display = 'none';
   document.getElementById('success-box').style.display  = 'block';
   document.getElementById('success-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
   if (resultType) {
     document.getElementById('success-result').innerHTML =
-      `Your quiz result: <strong>${resultType}</strong> — we'll match you on launch day 🎯`;
+      `Your quiz result: <strong>${resultType}</strong> — we'll match you on launch day \uD83C\uDFAF`;
   }
   count++;
   document.getElementById('reg-num').textContent = count.toLocaleString();
@@ -438,18 +558,15 @@ async function doRegister() {
   const name  = document.getElementById('fname').value.trim();
   const age   = document.getElementById('fage').value;
   const email = document.getElementById('femail').value.trim();
-  const type  = document.getElementById('ftype').value;
+  const nat   = document.getElementById('fnationality').value;
+  const gender = document.getElementById('fgender').value;
+  const pref  = document.getElementById('fpreference').value;
   const errEl = document.getElementById('error-msg');
 
   errEl.style.display = 'none';
 
   if (!name || !email) {
     errEl.textContent = 'Please enter your name and email address.';
-    errEl.style.display = 'block';
-    return;
-  }
-  if (!email.includes('@')) {
-    errEl.textContent = 'Please enter a valid email address.';
     errEl.style.display = 'block';
     return;
   }
@@ -460,11 +577,13 @@ async function doRegister() {
 
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
-  document.getElementById('btn-text').textContent = '⏳ Reserving your spot…';
+  document.getElementById('btn-text').textContent = '\u23F3 Reserving your spot\u2026';
 
   const payload = {
     name, email, age: age ? parseInt(age) : null,
-    user_type: type || null,
+    user_type: nat || null,
+    gender: gender || null,
+    preference: pref || null,
     notify_matches: notify.matches ? 1 : 0,
     notify_launch:  notify.launch  ? 1 : 0,
     notify_events:  notify.events  ? 1 : 0,
@@ -483,34 +602,29 @@ async function doRegister() {
 
     if (data.success) {
       showSuccess();
-      document.getElementById('reg-num').textContent = count.toLocaleString();
     } else {
       errEl.textContent = data.error || 'Something went wrong. Please try again.';
       errEl.style.display = 'block';
       btn.disabled = false;
-      document.getElementById('btn-text').textContent = '🏴 Reserve My Spot — It\'s Free 🇺🇸';
+      document.getElementById('btn-text').textContent = "Reserve My Spot — It's Free";
     }
   } catch (err) {
     console.error('Registration error:', err);
-    // Try direct success display even on network error
     showSuccess();
   }
 }
 
 // ── SHARE ──
 function shareTwitter() {
-  const text = encodeURIComponent("🏴❤️🇺🇸 The Tartan Army is still in Boston. Kilts & Clam Chowder is launching — a dating site for everyone who fell for a Scot (or a Bostonian) during the World Cup. Pre-register now!");
+  const text = encodeURIComponent("The Tartan Army is still in Boston. Kilts & Clam Chowder is launching \u2014 a dating site for everyone who fell for a Scot (or a Bostonian) during the World Cup. Pre-register now!");
   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent('https://kiltsandclamchowder.com')}`, '_blank');
 }
 function copyLink() {
   navigator.clipboard.writeText('https://kiltsandclamchowder.com').then(() => {
-    event.target.textContent = '✅ Copied!';
-    setTimeout(() => event.target.textContent = '🔗 Copy link', 2000);
+    event.target.textContent = '\u2705 Copied!';
+    setTimeout(() => event.target.textContent = '\uD83D\uDD17 Copy link', 2000);
   });
 }
-
-// Init quiz
-renderQ();
 </script>
 </body>
 </html>
