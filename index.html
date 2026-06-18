@@ -6,6 +6,7 @@
 <title>Kilts & Clam Chowder — Coming Soon</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+.flag-scot { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; font-style: normal; }
 
 :root {
   --red:   #e8192c; --red2: #ff4d5e;
@@ -163,8 +164,8 @@ body::before {
 </head>
 <body>
 
-<div class="floater">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
-<div class="floater">🇺🇸</div>
+<div class="floater" style="width:2.5rem;height:1.8rem;background:url(https://flagcdn.com/w80/gb-sct.png) center/cover;border-radius:4px;font-size:0"></div>
+<div class="floater" style="width:2.5rem;height:1.8rem;background:url(https://flagcdn.com/w80/us.png) center/cover;border-radius:4px;font-size:0"></div>
 <div class="floater">🍺</div>
 <div class="floater">🦞</div>
 <div class="floater">🎺</div>
@@ -178,13 +179,17 @@ body::before {
 
   <div class="live-badge">
     <div class="live-dot"></div>
-    <span class="live-text">🏴󠁧󠁢󠁳󠁣󠁴󠁿 The Tartan Army is still in Boston — act fast 🇺🇸</span>
+    <span class="live-text">🏴 The Tartan Army is still in Boston — act fast 🇺🇸</span>
   </div>
 
   <h1 class="logo">Kilts <span class="amp">&</span><br>Clam Chowder</h1>
-  <p class="logo-sub">Where Boston 🇺🇸 fell for the Tartan Army 🏴󠁧󠁢󠁳󠁣󠁴󠁿</p>
+  <p class="logo-sub">Where Boston fell for the Tartan Army</p>
 
-  <div class="flags"><span>🏴󠁧󠁢󠁳󠁣󠁴󠁿</span> <span class="flags-heart">❤️</span> <span>🇺🇸</span></div>
+  <div class="flags">
+      <span style="display:inline-block;width:3rem;height:2rem;background:url(https://flagcdn.com/w80/gb-sct.png) center/cover;border-radius:4px;vertical-align:middle"></span>
+      <span class="flags-heart">❤️</span>
+      <span style="display:inline-block;width:3rem;height:2rem;background:url(https://flagcdn.com/w80/us.png) center/cover;border-radius:4px;vertical-align:middle"></span>
+    </div>
 
   <div class="urgency">
     <div class="urgency-title">⏰ They're still here. This is your moment.</div>
@@ -219,8 +224,8 @@ body::before {
 
   <!-- REGISTER -->
   <div class="register-box" id="register-box">
-    <div class="register-title">Pre-register for early access 🏴󠁧󠁢󠁳󠁣󠁴󠁿❤️🇺🇸</div>
-    <div class="register-sub" id="reg-sub">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Complete the quiz above, then fill in your details below. 🇺🇸</div>
+    <div class="register-title">Pre-register for early access 🏴❤️🇺🇸</div>
+    <div class="register-sub" id="reg-sub">🏴 Complete the quiz above, then fill in your details below. 🇺🇸</div>
 
     <div class="error-msg" id="error-msg"></div>
 
@@ -231,9 +236,9 @@ body::before {
     <input class="finput" type="email" id="femail" placeholder="Email address" style="width:100%;margin-bottom:0.75rem" required>
     <select class="fselect" id="ftype" required>
       <option value="" disabled selected>I am a…</option>
-      <option value="scot_boston">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scot in Boston — looking to stay connected</option>
+      <option value="scot_boston">🏴 Scot in Boston — looking to stay connected</option>
       <option value="bostonian_met">🇺🇸 Bostonian — I met a Scot and I need answers</option>
-      <option value="scot_home">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scot back home — left my heart in Boston</option>
+      <option value="scot_home">🏴 Scot back home — left my heart in Boston</option>
       <option value="bostonian_want">🇺🇸 Bostonian — I didn't meet anyone but I WANT TO</option>
       <option value="other">Other — just get me on the list</option>
     </select>
@@ -247,14 +252,14 @@ body::before {
     </div>
 
     <button class="fsubmit" id="submit-btn" onclick="doRegister()">
-      <span id="btn-text">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Reserve My Spot — It's Free 🇺🇸</span>
+      <span id="btn-text">🏴 Reserve My Spot — It's Free 🇺🇸</span>
     </button>
     <p class="form-fine">No spam. No credit card. First access + 3 months premium free on launch. Unsubscribe any time.</p>
   </div>
 
   <!-- SUCCESS -->
   <div class="success-box" id="success-box">
-    <span class="big">🏴󠁧󠁢󠁳󠁣󠁴󠁿❤️🇺🇸</span>
+    <span class="big">🏴❤️🇺🇸</span>
     <h3>You're on the list, ya beauty!</h3>
     <div class="success-result" id="success-result"></div>
     <p>You'll be first through the door when we launch. We'll also send you a heads-up about Tartan Army events still happening in Boston this week.</p>
@@ -281,25 +286,25 @@ body::before {
 
   <div class="ticker-wrap">
     <div class="ticker">
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Callum from Glasgow</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Callum from Glasgow</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Maura from Southie</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Fiona from Edinburgh</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Fiona from Edinburgh</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Connor from Cambridge</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Angus from Aberdeen</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Angus from Aberdeen</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Bridget from Dorchester</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Hamish from Inverness</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Hamish from Inverness</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Shannon from JP</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Duncan from Perth</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Duncan from Perth</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Tara from Somerville</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Callum from Glasgow</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Callum from Glasgow</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Maura from Southie</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Fiona from Edinburgh</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Fiona from Edinburgh</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Connor from Cambridge</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Angus from Aberdeen</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Angus from Aberdeen</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Bridget from Dorchester</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Hamish from Inverness</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Hamish from Inverness</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Shannon from JP</span> just pre-registered</div>
-      <div class="ticker-item">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span>Duncan from Perth</span> just pre-registered</div>
+      <div class="ticker-item">🏴 <span>Duncan from Perth</span> just pre-registered</div>
       <div class="ticker-item">🇺🇸 <span>Tara from Somerville</span> just pre-registered</div>
     </div>
   </div>
@@ -330,7 +335,7 @@ const questions = [
 ];
 
 const results = [
-  { emoji: "🏴󠁧󠁢󠁳󠁣󠁴󠁿❤️🇺🇸", title: "The Full Tartan Convert",      desc: "Born for this. Atlantic love is your destiny. We'll find your match on launch day." },
+  { emoji: "🏴❤️🇺🇸", title: "The Full Tartan Convert",      desc: "Born for this. Atlantic love is your destiny. We'll find your match on launch day." },
   { emoji: "✈️🥰",              title: "The Transatlantic Romantic", desc: "Distance is an adventure to you. Your match is equally unbothered by time zones." },
   { emoji: "🍺💕",              title: "The Pub Philosopher",        desc: "Best connections happen over a pint and zero pretension. We know exactly who to match you with." }
 ];
@@ -483,7 +488,7 @@ async function doRegister() {
       errEl.textContent = data.error || 'Something went wrong. Please try again.';
       errEl.style.display = 'block';
       btn.disabled = false;
-      document.getElementById('btn-text').textContent = '🏴󠁧󠁢󠁳󠁣󠁴󠁿 Reserve My Spot — It\'s Free 🇺🇸';
+      document.getElementById('btn-text').textContent = '🏴 Reserve My Spot — It\'s Free 🇺🇸';
     }
   } catch (err) {
     console.error('Registration error:', err);
@@ -494,7 +499,7 @@ async function doRegister() {
 
 // ── SHARE ──
 function shareTwitter() {
-  const text = encodeURIComponent("🏴󠁧󠁢󠁳󠁣󠁴󠁿❤️🇺🇸 The Tartan Army is still in Boston. Kilts & Clam Chowder is launching — a dating site for everyone who fell for a Scot (or a Bostonian) during the World Cup. Pre-register now!");
+  const text = encodeURIComponent("🏴❤️🇺🇸 The Tartan Army is still in Boston. Kilts & Clam Chowder is launching — a dating site for everyone who fell for a Scot (or a Bostonian) during the World Cup. Pre-register now!");
   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent('https://kiltsandclamchowder.com')}`, '_blank');
 }
 function copyLink() {
