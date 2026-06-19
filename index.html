@@ -58,6 +58,66 @@ body::before {
 .page { position:relative; z-index:2; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:3rem 1.5rem; text-align:center; }
 
 .live-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.12); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.25); border-radius:50px; padding:0.45rem 1.1rem; margin-bottom:2rem; animation:fadeUp 0.6s ease both; }
+
+/* ── BOLD STATEMENT ── */
+.statement {
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  animation: fadeUp 0.6s ease 0.15s both;
+  position: relative;
+}
+.statement-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #ffd166 0%, #fff 25%, #ffd166 50%, #fff 75%, #ffd166 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: shimmer 4s linear infinite;
+  text-shadow: 0 0 60px rgba(245,166,35,0.4);
+  position: relative;
+  display: inline-block;
+  padding: 0 0.5rem;
+}
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+.statement-underline {
+  width: min(90%, 500px);
+  height: 5px;
+  margin: 0.8rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--red), var(--gold), transparent);
+  border-radius: 3px;
+  animation: underlinePulse 2s ease-in-out infinite;
+}
+@keyframes underlinePulse {
+  0%,100% { opacity: 0.6; transform: scaleX(0.9); }
+  50%      { opacity: 1;   transform: scaleX(1); }
+}
+.statement-flags {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  margin-top: 1rem;
+}
+.statement-flag-img {
+  width: 2.6rem; height: 1.9rem;
+  border-radius: 5px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.statement-glass {
+  font-size: 1.8rem;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+@media (max-width: 600px) {
+  .statement-flag-img { width: 2rem; height: 1.5rem; }
+  .statement-glass { font-size: 1.4rem; }
+}
+
+
 .live-dot { width:8px; height:8px; border-radius:50%; background:#4ade80; box-shadow:0 0 8px #4ade80; animation:pulse-dot 1.5s ease-in-out infinite; }
 @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
 .live-text { font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#4ade80; }
@@ -178,7 +238,7 @@ body::before {
 </head>
 <body>
 
-<div style="position:fixed;bottom:1rem;right:1rem;z-index:999;background:rgba(0,0,0,0.4);color:rgba(255,255,255,0.5);font-size:0.65rem;padding:0.3rem 0.6rem;border-radius:50px;font-family:monospace;">v2.2</div>
+<div style="position:fixed;bottom:1rem;right:1rem;z-index:999;background:rgba(0,0,0,0.4);color:rgba(255,255,255,0.5);font-size:0.65rem;padding:0.3rem 0.6rem;border-radius:50px;font-family:monospace;">v2.4</div>
 
 
 <div class="floater"><span style="display:inline-block;width:2.5rem;height:1.8rem;background:url(https://flagcdn.com/w40/gb-sct.png) center/cover;border-radius:3px;vertical-align:middle"></span></div>
@@ -201,6 +261,16 @@ body::before {
 
   <h1 class="logo">Kilts <span class="amp">&</span><br>Clam Chowder</h1>
   <p class="logo-sub">Where Boston fell for the Tartan Army</p>
+
+  <div class="statement">
+    <div class="statement-text">NO SCOTLAND, NO PARTY</div>
+    <div class="statement-underline"></div>
+    <div class="statement-flags">
+      <img class="statement-flag-img" src="https://flagcdn.com/w80/gb-sct.png" alt="Scotland">
+      <span class="statement-glass">🥃</span>
+      <img class="statement-flag-img" src="https://flagcdn.com/w80/us.png" alt="USA">
+    </div>
+  </div>
 
   <div class="flags">
       <span style="display:inline-block;width:3rem;height:2rem;background:url(https://flagcdn.com/w80/gb-sct.png) center/cover;border-radius:4px;vertical-align:middle"></span>
